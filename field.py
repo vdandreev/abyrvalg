@@ -1,4 +1,4 @@
-from __future__ import print_function
+import string
 
 class Tile():
     def __init__(self):
@@ -29,6 +29,7 @@ class Tile():
     
 
 class Field():
+    
     def __init__(self, rows = 10, cols = 10):
         local_grid = []
 
@@ -41,11 +42,27 @@ class Field():
 
         self.grid = local_grid
 
-    def draw(self):
+    def __repr__(self):
+        repr_string = ''
+        current_col_index = 0
+        indicies = list(' ' + string.ascii_lowercase)
+        while current_col_index <= len(self.grid):
+            repr_string += " {} ".format(indicies[current_col_index])
+            current_col_index += 1
+        repr_string += "\n"
+
+        row_index = 0
         for i in self.grid:
+            row_index += 1
+            if row_index < 10:
+                repr_string += " {} ".format(str(row_index))
+            else:
+                repr_string += "{} ".format(str(row_index))
             for j in i:
-                print (j,end = '')
-            print ('')
+                repr_string += repr(j)
+            repr_string += "\n"
+
+        return repr_string
             
             
         
@@ -62,4 +79,4 @@ field.grid[2][6].set_type("ship")
 field.grid[2][5].do_hit()
 field.grid[3][5].do_hit()
 
-field.draw()
+print field
