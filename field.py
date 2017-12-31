@@ -52,24 +52,32 @@ class Field():
         repr_string += "\n"
 
         row_index = 0
-        for i in self.grid:
+        for row in self.grid:
             row_index += 1
             if row_index < 10:
                 repr_string += " {} ".format(str(row_index))
             else:
                 repr_string += "{} ".format(str(row_index))
-            for j in i:
-                repr_string += repr(j)
+            
+            for col in row:
+                repr_string += repr(col)
             repr_string += "\n"
 
         return repr_string
-            
+
+    def place_ship(self, rowcol, direction, length):
+        row_index = rowcol[1] - 1
+        col_index = string.lowercase.index(rowcol[0])
+        
+        
             
         
 
 
 
 field = Field()
+
+field.place_ship("c2", "down", 3)
 
 field.grid[2][4].set_type("ship")
 field.grid[2][5].set_type("ship")
