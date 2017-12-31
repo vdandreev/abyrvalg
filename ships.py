@@ -9,7 +9,7 @@ class ship():
 
             if direction == "right":
                 tile_x = x + len(self.tiles)
-            elif direction == "left":
+            elif direction == "down":
                 tile_y = y + len(self.tiles)
 
             ship_tile = {
