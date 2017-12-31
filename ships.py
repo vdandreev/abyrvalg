@@ -14,24 +14,20 @@ class ship():
 
             ship_tile = {
                 "alive": True,
-                "coodrd_x": tile_x,
-                "coodrd_y": tile_y
+                "coord_x": tile_x,
+                "coord_y": tile_y
             }
-           
-            def tile_in_ship(x,y):
-                if ship_tile["alive"] == True:
-                    ship_tile["Location"] = 'There'
-                else:
-                    ship_tile["Location"] = 'Not There'
-            tile_in_ship(tile_x,tile_y)
             self.tiles.append(ship_tile)
     
     def get_ship(self):
         print json.dumps(self.tiles, indent=4, sort_keys=True)
-            
+     def tile_in_ship(self,def_x,def_y):
+     for  i in range(len(self.tiles)):
+         if (def_x == self.tiles[i]["coord_x"]) &  (def_y == self.tiles[i]["coord_y"]):print('True')
+         else:print('False')
     
 
 battleship = ship(2,3,"right", 4)
 
 battleship.get_ship()
-
+battleship.tile_in_ship(2,3)
