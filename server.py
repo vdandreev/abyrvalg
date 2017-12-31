@@ -16,6 +16,7 @@ class MaritimeServer(Resource):
               
         return {"I_AM": args.whois}
 
+    
 
 api.add_resource(MaritimeServer, '/')
 
