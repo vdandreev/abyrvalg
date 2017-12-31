@@ -66,31 +66,30 @@ class Field():
         return repr_string
 
     def place_ship(self, rowcol, direction, length):
+        """
+        This function returns True, if it was able to place a ship, False otherwise
+        It should fill tiles (see Tile class) with corresponding type.
+
+        For your convenience, row_index and col_index are already mapped to correct values of indicies
+        in grid - as list starts with index 0
+        """
+
         row_index = int(rowcol[1:])-1
         col_index = string.ascii_lowercase.index(rowcol[0])
 
         if (direction == "right") and (col_index <= len(self.grid[0]) - length) :
-
              for i in range(length):
               field.grid[row_index][col_index+i].set_type("ship")
         elif (direction == "right") and (col_index > len(self.grid[0]) - length):
-            print(False)
-
+            return False
 
         if (direction == "down") and (row_index <= len(self.grid[0]) - length) :
             for i in range(length):
                 field.grid[row_index+i][col_index].set_type("ship")
         elif (direction == "down") and (row_index > len(self.grid[0]) - length):
-            print(False)
+            return False
     
-        """
-        This function returns True, if it was able to place a ship, False otherwise
-        It should fill tiles (see Tile class) with corresponding type.
 
-        For your convenience, row_index and col_index are already mapped to correct values of indicies 
-        in grid - as list starts with index 0
-        """
-        
         
         
             
@@ -100,14 +99,10 @@ class Field():
 
 field = Field()
 
-field.place_ship("c2", "down", 3)
+if field.place_ship("e9", "down", 3):
+    print "Ship placed sucessfully"
+else:
+    print "Ship palacement failed"
 
-field.grid[2][4].set_type("ship")
-field.grid[2][5].set_type("ship")
-field.grid[2][6].set_type("ship")
-
-
-field.grid[2][5].do_hit()
-field.grid[3][5].do_hit()
 
 print field
