@@ -66,8 +66,16 @@ class Field():
         return repr_string
 
     def place_ship(self, rowcol, direction, length):
-        row_index = rowcol[1] - 1
+        row_index = int(rowcol[1]) - 1
         col_index = string.lowercase.index(rowcol[0])
+        """
+        This function returns True, if it was able to place a ship, False otherwise
+        It should fill tiles (see Tile class) with corresponding type.
+
+        For your convenience, row_index and col_index are already mapped to correct values of indicies 
+        in grid - as list starts with index 0
+        """
+        
         
         
             
