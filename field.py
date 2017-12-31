@@ -65,10 +65,24 @@ class Field():
 
         return repr_string
 
-
     def place_ship(self, rowcol, direction, length):
-        row_index = int(rowcol[1]) - 1
-        col_index = string.lowercase.index(rowcol[0])
+        row_index = int(rowcol[1:])-1
+        col_index = string.ascii_lowercase.index(rowcol[0])
+
+        if (direction == "right") and (col_index <= len(self.grid[0]) - length) :
+
+             for i in range(length):
+              field.grid[row_index][col_index+i].set_type("ship")
+        elif (direction == "right") and (col_index > len(self.grid[0]) - length):
+            print(False)
+
+
+        if (direction == "down") and (row_index <= len(self.grid[0]) - length) :
+            for i in range(length):
+                field.grid[row_index+i][col_index].set_type("ship")
+        elif (direction == "down") and (row_index > len(self.grid[0]) - length):
+            print(False)
+    
         """
         This function returns True, if it was able to place a ship, False otherwise
         It should fill tiles (see Tile class) with corresponding type.
