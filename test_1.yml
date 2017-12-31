@@ -1,7 +1,0 @@
----
-- hosts: test-servers
-  remote_user: root
-
-  tasks:
-  - name: run uptime
-    command: uptime
