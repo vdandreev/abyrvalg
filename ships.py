@@ -21,7 +21,7 @@ class ship():
     
     def get_ship(self):
         print json.dumps(self.tiles, indent=4, sort_keys=True)
-     def tile_in_ship(self,def_x,def_y):
+    def tile_in_ship(self,def_x,def_y):
      for  i in range(len(self.tiles)):
          if (def_x == self.tiles[i]["coord_x"]) &  (def_y == self.tiles[i]["coord_y"]):print('True')
          else:print('False')
