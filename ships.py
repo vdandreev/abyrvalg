@@ -17,6 +17,13 @@ class ship():
                 "coodrd_x": tile_x,
                 "coodrd_y": tile_y
             }
+           
+            def tile_in_ship(x,y):
+                if ship_tile["alive"] == True:
+                    ship_tile["Location"] = 'There'
+                else:
+                    ship_tile["Location"] = 'Not There'
+            tile_in_ship(tile_x,tile_y)
             self.tiles.append(ship_tile)
     
     def get_ship(self):
