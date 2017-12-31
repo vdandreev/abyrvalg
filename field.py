@@ -66,7 +66,7 @@ class Field():
         return repr_string
 
    
-      def place_ship(self, rowcol, direction, length):
+     def place_ship(self, rowcol, direction, length):
         row_index = int(rowcol[1]) - 1
         col_index = string.ascii_lowercase.index(rowcol[0])
         if (direction == "right") and (length + row_index <=len(self.grid[0]) ):
