@@ -1,16 +1,18 @@
 import field
 import uuid
-
+import pickle
+game_token = uuid.uuid4()
 class Game():
 
     def __init__(self, players = ["kate", "tom"]):
         self.session = {}
-        self.session["id"] = uuid.uuid4()
+
+        self.session["id"] = str(uuid.uuid4().__repr__())
+
         for player in players:
-            self.session[player] = {}
-            self.session[player]["name"] = player
-            self.session[player]["token"] = uuid.uuid4()
-            self.session[player]["field"] = field.Field()
+          self.session[player] = {}
+          self.session[player]["name"] = player
+          self.session[player]["field"] = field.Field()
 
     def get_session_id(self):
         return self.session["id"]
@@ -29,14 +31,19 @@ class Game():
             return False
 
 
-    def save_game(self, file_path):
+    def save_game(self,file_path) :
         """
         This should save game to file as an object, so the following would be possible
         new_game = Game(["vasya", "pupkin"])
         new_game.save_game("/path/to/file")
 
         """
-        pass
+
+
+        pickle.dump(game_token,open(file_path,'wb'))
+
+
+
 
     def load_game(self, file_path):
         """
@@ -45,5 +52,12 @@ class Game():
         old_game.load_game("/path/to/file")
         you can check correctness by checking players and their tokens
         """
-        pass
 
+        pickle.load(open(file_path,'rb'))
+
+
+
+new_game = Game(['kate','tom'])
+new_game.save_game('home\goods')
+old_game = Game()
+old_game.load_game('home\goods')
