@@ -6,7 +6,7 @@ class Game():
 
     def __init__(self, players = ["kate", "tom"]):
         self.session = {}
-        self.session['token'] = uuid.uuid4()
+        
         self.session["id"] = str(uuid.uuid4().__repr__())
 
         for player in players:
@@ -53,7 +53,7 @@ class Game():
         you can check correctness by checking players and their tokens
         """
 
-        pickle.load(open(file_path,'rb'))
+        self.session = pickle.load(open(file_path,'rb'))
 
 
 
