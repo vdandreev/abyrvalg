@@ -4,15 +4,25 @@ import pickle
 
 class Game():
 
-    def __init__(self, players = ["kate", "tom"]):
+    def __init__(self):
         self.session = {}
         
         self.session["id"] = str(uuid.uuid4().__repr__())
 
-        for player in players:
-          self.session[player] = {}
-          self.session[player]["name"] = player
-          self.session[player]["field"] = field.Field()
+        #for player in players:
+        #  self.session[player] = {}
+        #  self.session[player]["name"] = player
+        #  self.session[player]["field"] = field.Field()
+
+    def join_game(self, player_name):
+        """
+        This should enable a player to join game. It should create an entry for
+        the new player in session dict, alongside with field and id.
+        It should check how many players already joined and do not allow to join
+        more than 2 players.
+        It should return plaer token and game token.
+        """
+        pass
 
     def get_session_id(self):
         return self.session["id"]
@@ -31,26 +41,19 @@ class Game():
             return False
 
 
-    def save_game(self,file_path) :
+    def save_game(self) :
         """
-        This should save game to file as an object, so the following would be possible
-        new_game = Game(["vasya", "pupkin"])
-        new_game.save_game("/path/to/file")
+        This should save game to a file, which name derived from game id
 
         """
-
-
         pickle.dump(self.session,open(file_path,'wb'))
 
 
 
 
-    def load_game(self, file_path):
+    def load_game(self, game_id):
         """
-        This should load a game from file, so something following possible:
-        old_game = Game()
-        old_game.load_game("/path/to/file")
-        you can check correctness by checking players and their tokens
+        It should load game from previously saved one
         """
 
         self.session = pickle.load(open(file_path,'rb'))
