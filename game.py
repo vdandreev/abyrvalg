@@ -1,12 +1,12 @@
 import field
 import uuid
 import pickle
-game_token = uuid.uuid4()
+
 class Game():
 
     def __init__(self, players = ["kate", "tom"]):
         self.session = {}
-
+        self.session['token'] = uuid.uuid4()
         self.session["id"] = str(uuid.uuid4().__repr__())
 
         for player in players:
@@ -40,7 +40,7 @@ class Game():
         """
 
 
-        pickle.dump(game_token,open(file_path,'wb'))
+        pickle.dump(self.session,open(file_path,'wb'))
 
 
 
